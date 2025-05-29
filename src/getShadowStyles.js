@@ -3,7 +3,11 @@ export default function (shadows) {
         .filter((s) => s.active)
         .map((s) => {
             let prefix = s.inset ? 'inset ' : ''
-            return `${prefix}${s.offsetX}px ${s.offsetY}px ${s.blur}px ${s.spread}px ${s.color}`
+            const offsetX = Number(s.offsetX) ? `${s.offsetX}px` : `0`;
+            const offsetY = Number(s.offsetY) ? `${s.offsetY}px` : `0`;
+            const blur = Number(s.blur) ? `${s.blur}px` : `0`;
+            const spread = Number(s.spread) ? `${s.spread}px` : `0`;
+            return `${prefix}${offsetX} ${offsetY} ${blur} ${spread} ${s.color}`
         })
         .join(',')
         .trim()
